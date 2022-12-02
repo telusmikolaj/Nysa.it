@@ -1,0 +1,91 @@
+version: '3.7'
+
+services:
+
+  #  app:
+  #    image: 'shop-api-docker'
+  #    build:
+  #      context: .
+  #    container_name: app
+  #    depends_on:
+  #      - db
+  #    environment:
+  #      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+  #      - SPRING_DATASOURCE_USERNAME=compose-postgres
+  #      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+  #      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - 8080:8080
+    environment:
+     - KC_DB=postgres
+     - KC_DB_URL=jdbc:postgresql://postgres/keycloak
+     - KC_DB_USERNAME=postgres
+     - KC_DB_PASSWORD=postgres
+     - KC_HOSTNAME=localhost
+     - KEYCLOAK_ADMIN=admin
+     - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - keycloak-data:/var/lib/keycloak/data
+    depends_on:
+      - postgres
+    command:
+      -  start-dev
+    networks:
+      - great
+
+  postgres:
+    image: postgres
+    volumes:
+      - goreit-postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=keycloak
+      - PGDATA=keycloak
+    networks:
+      - great
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - 27017:27017
+#    command: mongod mongod --logpath /var/logs
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+    networks:
+      - great
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2000M
+    environment:
+      RABBITMQ_USERNAME: admin
+      RABBITMQ_PASSWORD: admin
+    volumes:
+      - rabbitmq-data:/data/mq
+    networks:
+      - great
+
+
+networks:
+  great:
+
+volumes:
+  keycloak-data:
+  goreit-postgres-data:
+  rabbitmq-data:
+  mongodb-data:
