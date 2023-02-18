@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Document
 @Data
 @Builder
+@ToString
 public class Product {
 
     @Id
