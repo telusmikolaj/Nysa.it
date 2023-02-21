@@ -1,11 +1,14 @@
-package pl.com.great.nysa.it.api;
+package pl.com.great.nysa.it.product.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import pl.com.great.nysa.it.api.WebScrapper;
+import pl.com.great.nysa.it.domain.Product;
 import pl.com.great.nysa.it.domain.ProductDto;
 import pl.com.great.nysa.it.service.ProductService;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -16,6 +19,11 @@ public class ProductController {
 
     private final WebScrapper webScrapper;
 
+    @GetMapping()
+    public List<ProductDto> getProducts() throws IOException {
+        return this.productService.getAllProducts();
+
+    }
     @PostMapping
     public ProductDto create(@RequestBody ProductDto productDto) {
         return this.productService.create(productDto);
@@ -26,8 +34,14 @@ public class ProductController {
         return this.productService.getByTitle(title);
     }
 
-    @GetMapping
-    public void test() throws IOException {
-        webScrapper.getProductsFromPage();
+    @GetMapping("/scrap")
+    public List<ProductDto> test() throws IOException {
+        List<Product> productsFromPage = webScrapper.getProductsFromPage();
+        return this.productService.saveProductList(productsFromPage);
+    }
+
+    @DeleteMapping
+    public void deleteAll() {
+        this.productService.deleteAll();
     }
 }

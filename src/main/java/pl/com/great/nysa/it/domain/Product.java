@@ -8,19 +8,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Document
-@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@ToString
+@Data
+@Document
 public class Product {
 
     @Id
     private String id;
-    private String title;
+    private String name;
     private String description;
     private BigDecimal price;
     private String category;
-    private String seller;
+    private String currency;
+    private String imgUrl;
+
 
     @CreatedDate
     private LocalDateTime created;

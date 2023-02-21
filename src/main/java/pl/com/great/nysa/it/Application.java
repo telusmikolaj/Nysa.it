@@ -14,24 +14,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Application {
 
-	private final ProductRepository productRepository;
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    private final ProductRepository productRepository;
 
-	@Bean
-	CommandLineRunner runner(ProductRepository repository) {
-		return args -> {
-			Product product = Product.builder()
-					.title("Test title")
-					.description("Test description")
-					.price(BigDecimal.ZERO)
-					.category("test category")
-					.seller("test seller")
-					.build();
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
-			productRepository.save(product);
-		};
-	}
 
 }

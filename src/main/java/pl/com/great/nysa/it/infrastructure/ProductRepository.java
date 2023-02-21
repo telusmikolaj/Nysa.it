@@ -9,5 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends MongoRepository<Product, UUID> {
-    Optional<Product> findProductsByTitle(String title);
+    Optional<Product> findProductsByName(String name);
+
+
 }
