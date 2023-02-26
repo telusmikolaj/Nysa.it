@@ -1,6 +1,7 @@
 package pl.com.great.nysa.it.domain.mapper;
 
 import org.mapstruct.Mapper;
+import org.springframework.data.domain.Page;
 import pl.com.great.nysa.it.domain.Product;
 import pl.com.great.nysa.it.domain.ProductDto;
 
@@ -13,4 +14,6 @@ public interface ProductMapper {
     Product dtoToProduct(ProductDto productDto);
 
     List<ProductDto> mapToDtoList(List<Product> products);
+
+
 }

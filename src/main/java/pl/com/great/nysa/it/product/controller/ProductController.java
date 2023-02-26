@@ -1,6 +1,8 @@
 package pl.com.great.nysa.it.product.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pl.com.great.nysa.it.api.WebScrapper;
 import pl.com.great.nysa.it.domain.Product;
@@ -13,15 +15,16 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     private final ProductService productService;
 
     private final WebScrapper webScrapper;
 
-    @GetMapping()
-    public List<ProductDto> getProducts() throws IOException {
-        return this.productService.getAllProducts();
+    @GetMapping
+    public Page<Product> getProducts(Pageable pageable) {
+        return this.productService.getAllProducts(pageable);
 
     }
     @PostMapping

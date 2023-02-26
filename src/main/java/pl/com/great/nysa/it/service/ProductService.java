@@ -1,6 +1,8 @@
 package pl.com.great.nysa.it.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.com.great.nysa.it.domain.Product;
 import pl.com.great.nysa.it.domain.ProductDto;
@@ -34,8 +36,8 @@ public class ProductService {
         return this.productMapper.mapToDtoList(this.productRepository.saveAll(productList));
     }
 
-    public List<ProductDto> getAllProducts() {
-        return this.productMapper.mapToDtoList(this.productRepository.findAll());
+    public Page<Product> getAllProducts(Pageable pageable) {
+        return this.productRepository.findAll(pageable);
     }
 
     public void deleteAll() {

@@ -9,6 +9,10 @@ spring:
       database: nysa
       port: '27017'
       host: localhost
+    web:
+      pageable:
+        default-page-size: 25
+        max-page-size: 100
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
