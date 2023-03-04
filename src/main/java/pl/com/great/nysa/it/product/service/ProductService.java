@@ -1,13 +1,13 @@
-package pl.com.great.nysa.it.service;
+package pl.com.great.nysa.it.product.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import pl.com.great.nysa.it.domain.Product;
-import pl.com.great.nysa.it.domain.ProductDto;
-import pl.com.great.nysa.it.domain.mapper.ProductMapper;
-import pl.com.great.nysa.it.infrastructure.ProductRepository;
+import pl.com.great.nysa.it.product.domain.Product;
+import pl.com.great.nysa.it.product.domain.ProductDto;
+import pl.com.great.nysa.it.product.domain.mapper.ProductMapper;
+import pl.com.great.nysa.it.product.repository.ProductRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;

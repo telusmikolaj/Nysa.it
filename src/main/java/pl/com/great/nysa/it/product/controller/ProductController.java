@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-import pl.com.great.nysa.it.api.WebScrapper;
-import pl.com.great.nysa.it.domain.Product;
-import pl.com.great.nysa.it.domain.ProductDto;
-import pl.com.great.nysa.it.service.ProductService;
+import pl.com.great.nysa.it.webscrapper.api.WebScrapper;
+import pl.com.great.nysa.it.product.domain.Product;
+import pl.com.great.nysa.it.product.domain.ProductDto;
+import pl.com.great.nysa.it.product.service.ProductService;
 
 import java.io.IOException;
 import java.util.List;

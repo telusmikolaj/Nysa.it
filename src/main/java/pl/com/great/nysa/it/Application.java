@@ -1,14 +1,9 @@
 package pl.com.great.nysa.it;
 
 import lombok.AllArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import pl.com.great.nysa.it.domain.Product;
-import pl.com.great.nysa.it.infrastructure.ProductRepository;
-
-import java.math.BigDecimal;
+import pl.com.great.nysa.it.product.repository.ProductRepository;
 
 @SpringBootApplication
 @AllArgsConstructor

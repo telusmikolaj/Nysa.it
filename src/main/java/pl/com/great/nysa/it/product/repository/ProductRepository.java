@@ -1,8 +1,8 @@
-package pl.com.great.nysa.it.infrastructure;
+package pl.com.great.nysa.it.product.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import pl.com.great.nysa.it.domain.Product;
+import pl.com.great.nysa.it.product.domain.Product;
 
 import java.util.Optional;
 import java.util.UUID;

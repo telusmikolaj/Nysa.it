@@ -1,4 +1,4 @@
-package pl.com.great.nysa.it.domain;
+package pl.com.great.nysa.it.product.domain;
 
 import lombok.Builder;
 import lombok.Data;

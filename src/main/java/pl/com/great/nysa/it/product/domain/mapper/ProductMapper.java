@@ -1,9 +1,8 @@
-package pl.com.great.nysa.it.domain.mapper;
+package pl.com.great.nysa.it.product.domain.mapper;
 
 import org.mapstruct.Mapper;
-import org.springframework.data.domain.Page;
-import pl.com.great.nysa.it.domain.Product;
-import pl.com.great.nysa.it.domain.ProductDto;
+import pl.com.great.nysa.it.product.domain.Product;
+import pl.com.great.nysa.it.product.domain.ProductDto;
 
 import java.util.List;
 

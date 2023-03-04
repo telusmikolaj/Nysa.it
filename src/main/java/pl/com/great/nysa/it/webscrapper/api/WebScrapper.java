@@ -1,4 +1,4 @@
-package pl.com.great.nysa.it.api;
+package pl.com.great.nysa.it.webscrapper.api;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
@@ -6,9 +6,8 @@ import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlMeta;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.com.great.nysa.it.domain.Product;
+import pl.com.great.nysa.it.product.domain.Product;
 
 import java.io.IOException;
 import java.math.BigDecimal;
