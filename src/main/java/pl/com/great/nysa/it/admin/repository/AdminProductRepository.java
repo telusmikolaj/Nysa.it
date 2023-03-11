@@ -5,5 +5,5 @@ import pl.com.great.nysa.it.admin.model.AdminProduct;
 
 import java.util.UUID;
 
-public interface AdminProductRepository extends MongoRepository<AdminProduct, UUID> {
+public interface AdminProductRepository extends MongoRepository<AdminProduct, String> {
 }

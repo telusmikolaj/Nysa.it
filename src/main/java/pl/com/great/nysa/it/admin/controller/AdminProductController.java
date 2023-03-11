@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import pl.com.great.nysa.it.admin.controller.dto.AdminProductDto;
 import pl.com.great.nysa.it.admin.model.AdminProduct;
 import pl.com.great.nysa.it.admin.service.AdminProductService;
 
@@ -20,8 +21,20 @@ public class AdminProductController {
         return this.adminProductService.getProducts(pageable);
     }
 
-    @PostMapping
-    public void create() {
-        //return this.adminProductService.create();
+    @GetMapping("/products/{id}")
+    public AdminProduct getProduct(@PathVariable String id) {
+        return this.adminProductService.getProduct(id);
     }
+
+    @PostMapping("/products")
+    public AdminProduct create(@RequestBody AdminProductDto adminProductDto) {
+        return this.adminProductService.create(adminProductDto);
+    }
+
+    @PutMapping("/products/{id}")
+    public AdminProductDto update(@RequestBody AdminProductDto adminProductDto, @PathVariable String id) {
+
+        return this.adminProductService.update(adminProductDto, id);
+    }
+
 }
