@@ -4,7 +4,10 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.com.great.nysa.it.admin.model.ProductCurrency;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -22,7 +25,8 @@ public class Product {
     private String description;
     private BigDecimal price;
     private String category;
-    private String currency;
+    @Enumerated(EnumType.STRING)
+    private ProductCurrency currency;
     private String imgUrl;
 
 

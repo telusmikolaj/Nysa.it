@@ -8,6 +8,8 @@ import pl.com.great.nysa.it.admin.controller.dto.AdminProductDto;
 import pl.com.great.nysa.it.admin.model.AdminProduct;
 import pl.com.great.nysa.it.admin.service.AdminProductService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin")
@@ -27,12 +29,12 @@ public class AdminProductController {
     }
 
     @PostMapping("/products")
-    public AdminProduct create(@RequestBody AdminProductDto adminProductDto) {
+    public AdminProduct create(@RequestBody @Valid AdminProductDto adminProductDto) {
         return this.adminProductService.create(adminProductDto);
     }
 
     @PutMapping("/products/{id}")
-    public AdminProductDto update(@RequestBody AdminProductDto adminProductDto, @PathVariable String id) {
+    public AdminProductDto update(@RequestBody @Valid AdminProductDto adminProductDto, @PathVariable String id) {
 
         return this.adminProductService.update(adminProductDto, id);
     }

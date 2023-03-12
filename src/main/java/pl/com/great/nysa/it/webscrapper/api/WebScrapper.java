@@ -7,6 +7,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlMeta;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+import pl.com.great.nysa.it.admin.model.ProductCurrency;
 import pl.com.great.nysa.it.product.domain.Product;
 
 import java.io.IOException;
@@ -72,7 +73,7 @@ public class WebScrapper {
                 .category(categoryByXPath.getTextContent() != null ? categoryByXPath.getTextContent() : " ")
                 .imgUrl(imgUrl)
                 .price(price)
-                .currency("PLN")
+                .currency(ProductCurrency.PLN)
                 .build();
     }
 
