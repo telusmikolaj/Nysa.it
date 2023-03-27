@@ -8,6 +8,7 @@ import pl.com.great.nysa.it.admin.model.ProductCurrency;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Builder
@@ -30,4 +31,7 @@ public class ProductDto {
     private ProductCurrency currency;
 
     private String imgUrl;
+    private List<String> imgUrls;
+    private String slug;
+
 }

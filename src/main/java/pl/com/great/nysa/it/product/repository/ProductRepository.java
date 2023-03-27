@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface ProductRepository extends MongoRepository<Product, UUID> {
+public interface ProductRepository extends MongoRepository<Product, String> {
     Optional<Product> findProductsByName(String name);
 
 

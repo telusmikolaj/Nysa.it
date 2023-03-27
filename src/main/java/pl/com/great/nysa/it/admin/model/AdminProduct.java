@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,4 +27,6 @@ public class AdminProduct {
     @Enumerated(EnumType.STRING)
     private ProductCurrency currency;
     private String imgUrl;
+    private List<String> imgUrls;
+
 }

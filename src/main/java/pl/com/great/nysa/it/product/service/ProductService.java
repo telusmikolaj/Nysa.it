@@ -45,4 +45,10 @@ public class ProductService {
     }
 
 
+    public ProductDto getById(String id) {
+        return this.productMapper.productToDto(
+                this.productRepository
+                        .findById(id)
+                        .orElseThrow(EntityNotFoundException::new));
+    }
 }

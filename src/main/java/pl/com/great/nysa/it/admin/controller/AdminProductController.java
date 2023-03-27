@@ -3,12 +3,15 @@ package pl.com.great.nysa.it.admin.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pl.com.great.nysa.it.admin.controller.dto.AdminProductDto;
 import pl.com.great.nysa.it.admin.model.AdminProduct;
 import pl.com.great.nysa.it.admin.service.AdminProductService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,15 +31,20 @@ public class AdminProductController {
         return this.adminProductService.getProduct(id);
     }
 
-    @PostMapping("/products")
-    public AdminProduct create(@RequestBody @Valid AdminProductDto adminProductDto) {
-        return this.adminProductService.create(adminProductDto);
+    @PostMapping(value = "/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public AdminProduct create(@RequestPart("product") @Valid AdminProductDto adminProductDto, @RequestPart("files") List<MultipartFile> files) {
+        return this.adminProductService.create(adminProductDto, files);
     }
 
     @PutMapping("/products/{id}")
     public AdminProductDto update(@RequestBody @Valid AdminProductDto adminProductDto, @PathVariable String id) {
 
         return this.adminProductService.update(adminProductDto, id);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public void delete(@PathVariable String id) {
+        this.adminProductService.delete(id);
     }
 
 }

@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class WebScrapper {
 
+
     private static final String baseUrl = "https://www.olx.pl/d/nysa/?page=2";
     private static final String DESCRIPTION_XPATH = "//*[@class='css-bgzo2k er34gjf0']";
     private static final String PRICE_XPATH = "//*[@class='css-ddweki er34gjf0']";
@@ -28,23 +29,25 @@ public class WebScrapper {
 
     private static final String IMG_URL_XPATH = "//meta[@property='og:image']";
 
-    private static final String OLX_URL = "https://www.olx.pl";
+    private static final String OLX_URL = "https://www.olx.pl/";
 
     private static final String HREF_XPATH = "//a";
     private static final WebClient client = new WebClient();
 
+    private static final String PRICE_ON_LIST = "css-10b0gli er34gjf0";
 
-    public List<Product> getProductsFromPage() throws IOException {
-        List<String> auctionUrlList = this.getAuctionUrlList();
-        return auctionUrlList.stream().map(x -> {
-            try {
-                return this.extractProduct(x);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }).collect(Collectors.toList());
 
-    }
+//    public List<Product> getProductsFromPage() throws IOException {
+//        List<String> auctionUrlList = this.getAuctionUrlList();
+//        return auctionUrlList.stream().map(x -> {
+//            try {
+//                return this.extractProduct(x);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }).collect(Collectors.toList());
+//
+//    }
 
     public Product extractProduct(String url) throws IOException {
 
@@ -77,9 +80,10 @@ public class WebScrapper {
                 .build();
     }
 
-    public List<String> getAuctionUrlList() throws IOException {
+    public List<String> getAuctionsUrlList(String title) throws IOException {
+
         client.getOptions().setJavaScriptEnabled(false);
-        HtmlPage page = client.getPage(baseUrl);
+        HtmlPage page = client.getPage(getProductListLink(title));
         List<HtmlAnchor> byXPath = page.getByXPath(HREF_XPATH);
 
         return byXPath.stream()
@@ -95,5 +99,9 @@ public class WebScrapper {
                 .collect(Collectors.toList());
     }
 
+    private String getProductListLink(String title) {
+
+        return OLX_URL + "q-" + title;
+    }
 
 }

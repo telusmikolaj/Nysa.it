@@ -10,6 +10,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
@@ -28,7 +30,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductCurrency currency;
     private String imgUrl;
-
+    private List<String> imgUrls;
 
     @CreatedDate
     private LocalDateTime created;
