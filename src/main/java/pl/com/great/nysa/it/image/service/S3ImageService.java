@@ -20,13 +20,7 @@ import java.util.List;
 @Service
 public class S3ImageService {
     private final AmazonS3 s3Client;
-    private final String bucketName = "nysa.it";
 
-    private final String ACCESS_KEY = "AKIA232P45UEXYDKYP4M";
-
-    private final String SECRET_KEY =  "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";
-
-    private final String REGION = "eu-central-1";
 
     public S3ImageService() {
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
